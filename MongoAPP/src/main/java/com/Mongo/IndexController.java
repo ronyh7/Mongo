@@ -52,10 +52,14 @@ public class IndexController {
     public String mensaje(@ModelAttribute Mensaje mensaje, HttpServletRequest request){
 
         System.out.println(mensaje.getMensaje());
+        List<Document> mensajes = collection.find().into(new ArrayList<Document>());
+        System.out.println("SIZE:"+mensajes.size());
+        int id = mensajes.size()+1;
         org.bson.Document Mensaje = new org.bson.Document();
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
         Document comentarios = new Document();
-        Mensaje.append("mensaje",mensaje.getMensaje()).append("autor",u.getUsername()).append("comentarios",comentarios);
+
+        Mensaje.append("_id",id).append("mensaje",mensaje.getMensaje()).append("autor",u.getUsername()).append("comentarios",comentarios);
 
 
         collection.insertOne(Mensaje);
@@ -64,14 +68,12 @@ public class IndexController {
 
     }
     @RequestMapping("/crearComentario")
-    public String comentario(@RequestParam ("id") String id, Model model, HttpServletRequest request) {
+    public String comentario(@RequestParam ("id") int id, Model model, HttpServletRequest request) {
         model.addAttribute("mensaje", new Mensaje());
-        String object ="ObjectId(\"";
-        String ID = object+id+"\")";
-        System.out.println(ID);
+        System.out.println(id);
         //List<Document> mensajes= collection.find(new Document("_id",ID)).into(new ArrayList<Document>());
-        Document d = collection.find(new Document("_id",ID)).first();
-        System.out.println("SIZE:"+d);
+        Document d = collection.find(new Document("_id",id)).first();
+        System.out.println("SIZE:"+d.toJson());
         //Document mensaje = mensajes.get(0);
         //System.out.println(mensaje);
         return "/mensaje";
