@@ -4,10 +4,11 @@
 <title>Insertar</title>
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/insertar.css" rel="stylesheet" >
-    <#include "header.ftl">
+
 
 </head>
 <body>
+    <#include "header.ftl">
     <div class="container">
         <div class="col-md-3"></div>
         <div class="col-md-5">

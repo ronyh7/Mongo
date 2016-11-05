@@ -7,12 +7,13 @@
 
 </head>
 <body>
+
     <div class="container">
         <div class="col-md-3"></div>
         <div class="col-md-4">
-            <h1>Escribe un Mensaje mama${usuario.username}</h1>
-            <form action="/insertar/" method="post" >
-                <label>Mensaje:</label> <textarea name="titulo" type="text"></textarea>
+            <h1>Escribe un Mensaje</h1>
+            <form action="/crearMensaje" th:object="${mensaje}" method="post" >
+                <label>Mensaje:</label> <textarea name="mensaje" type="text"></textarea>
                 <button name="Insertar" id="insertar" type="submit">Enviar</button>
             </form>
         </div>

@@ -10,9 +10,11 @@
     <!-- Bootstrap -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
       <link href="/static/css/blog.css" rel="stylesheet">
-      <#include "header.ftl">
+      <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+
+
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -20,7 +22,7 @@
     <![endif]-->
   </head>
   <body>
-    
+    <#include "header.ftl">
     <div class="container">
         <table class="table table-bordered">
             <thead>

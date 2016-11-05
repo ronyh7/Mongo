@@ -7,10 +7,34 @@
 </head>
 
 <body>
-<#include "header.ftl">
-<h1>Principal</h1>
+    <#include "header.ftl">
+    <h1>Mensajes</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Mensaje</th>
+            <th>Autor</th>
+            <th>Comentarios</th>
+        </tr>
+        </thead>
+        <tbody>
+        <#list mensajes as m>
+        <tr>
+            <td><a href="/crearComentario?id=${m._id}"> ${m.mensaje}</a></td>
+            <td>${m.autor}</td>
+            <#if m.comentarios?has_content>
+                <#list m.comentarios as c>
+                    <td>${c}</td>
+                </#list>
+            <#else>
+                <td>0</td>
+            </#if>
 
-Hello World
+        </tr>
+        </#list>
+
+        </tbody>
+    </table>
 
 
 
