@@ -9,6 +9,15 @@
 <body>
     <#include "header.ftl">
     <h1>Mensajes</h1>
+
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h1>Escribe un Mensaje</h1>
+        <form action="/crearMensaje" th:object="${mensaje}" method="post" >
+            <label>Mensaje:</label> <input name="mensaje" type="text"></>
+        <button name="Insertar" id="insertar" type="submit">Enviar</button>
+        </form>
+    </div>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -20,15 +29,10 @@
         <tbody>
         <#list mensajes as m>
         <tr>
-            <td><a href="/crearComentario?id=${m._id}"> ${m.mensaje}</a></td>
+            <td><a href="/comentario?id=${m._id}"> ${m.mensaje}</a></td>
             <td>${m.autor}</td>
-            <#if m.comentarios?has_content>
-                <#list m.comentarios as c>
-                    <td>${c}</td>
-                </#list>
-            <#else>
-                <td>0</td>
-            </#if>
+            <td>${m.cantidad}</td>
+
 
         </tr>
         </#list>

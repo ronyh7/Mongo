@@ -70,12 +70,12 @@ public class UsuarioController {
         u.setApellido(apellido);
 
         org.bson.Document usuarioD = new org.bson.Document();
-        HashMap<String,String> usuarioM = new HashMap<>();
-        usuarioM.put("username",usuario);
-        usuarioM.put("password",password);
-        usuarioM.put("nombre",nombre);
-        usuarioM.put("apellido",apellido);
-        usuarioD.putAll(usuarioM);
+        List<org.bson.Document> usuarios = collection.find().into(new ArrayList<org.bson.Document>());
+        int id=1;
+        if(usuarios!=null){
+           id =usuarios.size()+1;
+        }
+        usuarioD.append("_id",id+"").append("username",usuario).append("password",password).append("nombre",nombre).append("apellido",apellido);
 
         collection.insertOne(usuarioD);
 

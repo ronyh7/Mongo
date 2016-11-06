@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html x lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,14 +16,14 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/static/css/signin.css" rel="stylesheet">
-      <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet">
 
 
   </head>
 
   <body>
-
-    <div class="container">
+  <#include "header.ftl">
+  <div class="col-md-3"></div>
+  <div class="container col-md-4" align="center">
       <form class="form-signin" role="form" action="/login" method="post">
         <h2 class="form-signin-heading">The Blog</h2>
         <label for="inputEmail" class="sr-only">Nombre de usuario</label>

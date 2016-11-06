@@ -13,11 +13,10 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="/crearMensaje" class="navbar-brand">BLOG Here!</a>
+                <a href="/" class="navbar-brand">BLOG Here!</a>
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active"> <a href="/">Inicio</a></li>
                     <li><a href="/usuario">Usuarios</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
