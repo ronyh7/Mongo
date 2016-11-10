@@ -18,9 +18,14 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li><a href="/usuario">Usuarios</a></li>
+                    <li><a href="/palabra">Palabras Frecuentes</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/login">Login</a></li>
+                    <#if usuario.username=="">
+                        <li><a href="/login">Login</a></li>
+                    <#else>
+                        <li><a href="/login">Hola ${usuario.username}!</a></li>
+                    </#if>
                 </ul>
             </div>
         </div>

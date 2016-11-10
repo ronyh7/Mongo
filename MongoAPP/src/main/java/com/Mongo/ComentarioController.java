@@ -42,6 +42,13 @@ public class ComentarioController {
         model.addAttribute("mensaje",d.get("mensaje"));
         model.addAttribute("autor",d.get("autor"));
         model.addAttribute("comentarios",d.get("comentarios"));
+        Usuario usuario =(Usuario)request.getSession().getAttribute("usuario");
+        if(usuario==null){
+            model.addAttribute("usuario",new Usuario());
+        }
+        else{
+            model.addAttribute("usuario",usuario);
+        }
         return "/comentario";
     }
 
@@ -68,10 +75,10 @@ public class ComentarioController {
             comentarios.add(nuevoC);
 
             System.out.println(comentarios.size());
-            //collection.updateOne(eq("_id", idMensaje),new Document("$push", new Document("comentarios",c)));
             mensaje.remove("comentarios");
             mensaje.append("comentarios", comentarios);
         }
+
         collection.replaceOne(new Document("_id",idMensaje),mensaje);
 
 

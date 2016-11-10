@@ -31,8 +31,6 @@
         <label for="inputPassword" class="sr-only">Contraseña</label>
         <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar Sesion</button>
-          <hr>
-          <h4><a href="/">No tiene cuenta? puede continuar como invitado </a> </h4>
       </form>
 
     </div> <!-- /container -->

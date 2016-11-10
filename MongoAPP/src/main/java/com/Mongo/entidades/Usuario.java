@@ -23,6 +23,7 @@ public class Usuario implements Serializable{
         this.username=username;
         this.password=password;
     }
+    //<#else><li><a href="/login">Hola ${usuario.username}!</a></li>
 
     public Usuario(){
         username="";

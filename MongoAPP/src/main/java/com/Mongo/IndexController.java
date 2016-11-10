@@ -35,6 +35,7 @@ public class IndexController {
     MongoCollection<Document> collection = db.getCollection("mensaje");
 
 
+
     @RequestMapping("")
     public String getIndexPage(Model model, HttpServletRequest request) {
         List<Document> mensajes = collection.find().into(new ArrayList<Document>());
@@ -47,11 +48,8 @@ public class IndexController {
         parametros.add(new Document("$sort",new Document("cantidad",-1)));
 
 
-
-
         AggregateIterable<Document> resultados = collection.aggregate(parametros);
         List<Document> r2 = new ArrayList();
-
         resultados.forEach(new Consumer<Document>() {
             @Override
             public void accept(Document document) {
@@ -71,18 +69,9 @@ public class IndexController {
                 });
             }
         });
-        /*mensajes.forEach(new Consumer<Document>() {
-            @Override
-            public void accept(Document document) {
-                System.out.println("JSON1: "+ document.toJson());
-            }
-        });*/
-        r2.forEach(new Consumer<Document>() {
-            @Override
-            public void accept(Document document) {
-                System.out.println("JSON2: "+ document.toJson());
-            }
-        });
+
+
+
         List<Document> mensajesSin = collection.find(new Document("comentarios",new Document("$exists",false))).into(new ArrayList<Document>());
         for(int i=0; i<mensajesSin.size();i++){
             Document d = mensajesSin.get(i);
@@ -92,7 +81,7 @@ public class IndexController {
 
         model.addAttribute("mensajes",r2);
         model.addAttribute("mensaje", new Mensaje());
-        Usuario usuario =(Usuario)request.getAttribute("usuario");
+        Usuario usuario =(Usuario)request.getSession().getAttribute("usuario");
         if(usuario==null){
             model.addAttribute("usuario",new Usuario());
         }
@@ -109,6 +98,7 @@ public class IndexController {
     @Transactional
     public String mensaje(@ModelAttribute Mensaje mensaje, HttpServletRequest request){
         List<Document> mensajes = collection.find().into(new ArrayList<Document>());
+
         int id = mensajes.size()+1;
         org.bson.Document Mensaje = new org.bson.Document();
         Usuario u = (Usuario) request.getSession().getAttribute("usuario");
@@ -122,6 +112,7 @@ public class IndexController {
         return "redirect:/";
 
     }
+
 
 
 

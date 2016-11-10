@@ -47,12 +47,26 @@ public class UsuarioController {
         List<org.bson.Document> usuarios = collection.find().into(new ArrayList<org.bson.Document>());
 
         model.addAttribute("usuarios", usuarios);
+        Usuario usuario =(Usuario)request.getSession().getAttribute("usuario");
+        if(usuario==null){
+            model.addAttribute("usuario",new Usuario());
+        }
+        else{
+            model.addAttribute("usuario",usuario);
+        }
         return "/usuarios";
     }
 
     @RequestMapping("/crearUsuario")
     public String usuario(Model model, HttpServletRequest request) {
         model.addAttribute("usuario", new Usuario());
+        Usuario usuario =(Usuario)request.getSession().getAttribute("usuario");
+        if(usuario==null){
+            model.addAttribute("usuario",new Usuario());
+        }
+        else{
+            model.addAttribute("usuario",usuario);
+        }
         return "/crearUsuario";
     }
 

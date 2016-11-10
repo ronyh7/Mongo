@@ -24,14 +24,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                <#list comentarios as c>
-                    <tr>
-                        <td>${c.texto}</td>
-                        <td>${c._id}</td>
-                        <td>${c.autor}</td>
-                    </tr>
-                </#list>
-
+                <#if comentarios?has_content>
+                    <#list comentarios as c>
+                        <tr>
+                            <td>${c.texto}</td>
+                            <td>${c._id}</td>
+                            <td>${c.autor}</td>
+                        </tr>
+                    </#list>
+                </#if>
                 </tbody>
             </table>
         </div>

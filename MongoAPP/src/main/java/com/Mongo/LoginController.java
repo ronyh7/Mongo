@@ -49,12 +49,6 @@ public class LoginController {
 
         AggregateIterable<Document> resultados = mc.aggregate(parametros);
 
-        resultados.forEach(new Consumer<Document>() {
-            @Override
-            public void accept(Document document) {
-
-            }
-        });
         if(resultados.first()!=null) {
             HttpSession session = request.getSession(true);
             session.putValue("usuario",u);
